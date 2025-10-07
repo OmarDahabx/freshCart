@@ -1,0 +1,56 @@
+<div class="relative mb-3">
+            <!-- @let nameControl() = registerForm.get('name') ; -->
+            <div class="relative">
+                @if (element() === 'input') {
+                    <input [class]="{'border-green-700': control()?.valid ,'border-red-700' : control()?.invalid && control()?.touched}"
+                [formControl]="control()" [type]="typeInput() || ( flag() ? 'password' : 'text' ) " [id]="idInput()" class="main-input peer" placeholder=" " />
+                }@else if (element() === 'textArea') {
+                    <textarea [class]="{'border-green-700': control()?.valid ,'border-red-700' : control()?.invalid && control()?.touched}"
+                [formControl]="control()"  [id]="idInput()" class="main-input peer" placeholder=" " ></textarea>
+                }
+
+
+                <label [class]="{'text-green-700' : control()?.valid ,'text-red-700' : control()?.invalid && control()?.touched}"
+                [for]="idInput()" class="main-label">{{labelInput()}}</label>
+
+
+                @if (idInput() === 'password' || idInput() === 'rePassword') {
+                    <span (click)="flag.set(!flag())" class="absolute top-1/2 end-4 -translate-y-1/2 cursor-pointer">
+                        @if (flag()) {
+                            <i class="fas fa-eye"></i>
+                        }@else {
+                            <i class="fas fa-eye-slash"></i>
+                        }
+                    </span>
+                }
+            </div>
+            
+            
+
+            @if ( control()?.errors && control()?.touched ) {
+                <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                    <ul class="mt-1.5 list-disc list-inside">
+                        @if ( control()?.hasError('required') ) {
+                            <li>Input is required</li>
+                        }
+                        @if ( control()?.hasError('minLength') ) {
+                            <li>Minimum length is 3 characters</li>
+                        }
+                        @if ( control()?.hasError('maxLength') ) {
+                            <li>Maximum length is 20 characters</li>
+                        }
+                        @if ( control()?.hasError('email') ) {
+                            <li>Please enter a valid email address</li>
+                        }
+                        @if ( control()?.hasError('pattern') ) {
+                            <li> <ng-content/> </li>
+                        }
+                        @if ( control()?.hasError('missmatch') ) {
+                            <li>Passwords do not match</li>
+                        }
+                    </ul>
+                </div>
+            }
+            
+
+        </div>

@@ -1,0 +1,48 @@
+<section class="py-14">
+    <div class="container">
+        <h2 class="text-4xl text-center  my-20">All Your Orders</h2>
+        <div class="grid sm:grid-cols-12 gap-10">
+            <div class="col-span-10">
+                <div class="rounded shadow grid grid-cols-4 gap-4 p-2">
+                    
+
+                @for (order of allOrders(); track order._id) {
+                    @for (item of order.cartItems; track item._id) {
+                    <div class="max-w-sm py-1 max-h-[680px] overflow-hidden  bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+                            
+                                <img class="rounded-t-lg w-full  max-h-[416px]" [src]="item.product.imageCover" [alt]="item.product.title" />
+                            
+
+                        <div class="p-5">
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white line-clamp-1">{{item.product.title}}</h5>
+                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Order ID : {{order.id}}</p>
+                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Is Delivered : {{order.isDelivered ? 'Delivered 🚚' : 'Not Delivered ⏳'}} </p>
+                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Is Paid : {{ order.isPaid ? 'Paid ✅' : 'Not Paid ❌'}}</p>
+                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Date : {{order.paidAt | date:'medium'}} </p>
+                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Payment Type : 
+                                @if(order.paymentMethodType === 'card'){
+                                    <span><i class="fa-brands fa-cc-visa text-2xl"></i></span>
+                                }@else if (order.paymentMethodType === 'cash') {
+                                    <i class="fa-solid fa-hand-holding-dollar text-2xl"></i>
+                                }
+                            </p>
+                        </div>
+                    </div>
+                 }
+                }
+
+                </div>
+            </div>
+
+            <div class="col-span-2 max-w-full min-w-80">
+                <div class="bg-gray-200 flex flex-col grow min-w-full py-10 px-5">
+                    <p class="text-2xl">Shipping Price : {{allOrders()[0].shippingPrice}} </p>
+                    <p class="text-2xl my-2">Tax Price : {{allOrders()[0].taxPrice}}</p>
+                    <hr class="mb-2">
+                    <p class="text-2xl mb-2">Total Order Price : {{allOrders()[0].totalOrderPrice}} </p>
+                    <button class="btn rounded-lg">Show Order Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
