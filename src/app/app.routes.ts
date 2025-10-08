@@ -1,4 +1,3 @@
-// import { RenderMode } from '@angular/ssr';
 import { Routes } from '@angular/router';
 import { AuthLayoutComponent } from './core/layouts/auth-layout/auth-layout.component';
 import { BlankLayoutComponent } from './core/layouts/blank-layout/blank-layout.component';
@@ -8,6 +7,7 @@ import { authGuard } from './core/guards/authGuard/auth-guard';
 import { isLoggedGuard } from './core/guards/isLogged/is-logged-guard';
 import { NotfoundComponent } from './features/notfound/notfound.component';
 import { ForgetPasswordComponent } from './core/auth/forget-password/forget-password.component';
+
 
 export const routes: Routes = [
     {path:'' , redirectTo:'home', pathMatch:'full'},
@@ -23,9 +23,10 @@ export const routes: Routes = [
         {path:'brands' , loadComponent:()=>import('./features/brands/brands.component').then( (c)=>c.BrandsComponent ), title:'Brands Page'},
         {path:'categories' ,loadComponent:()=>import('./features/categories/categories.component').then( (c)=>c.CategoriesComponent ), title:'Categories Page'},
         {path:'allorders' , loadComponent:()=>import('./features/allorders/allorders.component').then( (c)=>c.AllordersComponent ), title:'all orders Page'},
-        {path:'details/:slug/:id' , loadComponent:()=>import('./features/details/details.component').then( (c)=>c.DetailsComponent ) , title:'details Page'},
-        {path:'details/:id' , loadComponent:()=>import('./features/details/details.component').then( (c)=>c.DetailsComponent ) , title:'details Page' },
-        {path:'checkout/:id' ,  loadComponent:()=>import('./features/checkout/checkout.component').then( (c)=>c.CheckoutComponent )  , title:'checkout Page'}
+        {path:'details/:slug/:id' , loadComponent:()=>import('./features/details/details.component').then( (c)=>c.DetailsComponent ) , title:'details Page' , data: { prerender: false } },
+        {path:'details/:id' , loadComponent:()=>import('./features/details/details.component').then( (c)=>c.DetailsComponent ) , title:'details Page' , data: { prerender: false }  },
+        {path:'checkout/:id' ,  loadComponent:()=>import('./features/checkout/checkout.component').then( (c)=>c.CheckoutComponent )  , title:'checkout Page' , data: { prerender: false }  }
+        
     ]},
     {path:'**' , component:NotfoundComponent , title:'Not Found Page'}
 ];
