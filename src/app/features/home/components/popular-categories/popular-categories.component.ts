@@ -24,7 +24,7 @@ export class PopularCategoriesComponent implements OnInit {
     autoplay: true,
     autoplayTimeout: 3500,
     autoplayHoverPause: true,
-    margin: 10 ,
+    margin: 14 ,
     navSpeed: 700,
     navText: ['', ''],
     responsive: {
@@ -35,13 +35,13 @@ export class PopularCategoriesComponent implements OnInit {
         items: 2
       },
       740: {
-        items: 3
+        items: 2
       },
       940: {
-        items: 4
+        items: 3
       },
       1100: {
-        items: 6
+        items: 5
       }
     },
     nav: false

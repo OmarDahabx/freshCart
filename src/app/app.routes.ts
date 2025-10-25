@@ -25,7 +25,9 @@ export const routes: Routes = [
         {path:'allorders' , loadComponent:()=>import('./features/allorders/allorders.component').then( (c)=>c.AllordersComponent ), title:'all orders Page'},
         {path:'details/:slug/:id' , loadComponent:()=>import('./features/details/details.component').then( (c)=>c.DetailsComponent ) , title:'details Page' , data: { prerender: false } },
         {path:'details/:id' , loadComponent:()=>import('./features/details/details.component').then( (c)=>c.DetailsComponent ) , title:'details Page' , data: { prerender: false }  },
-        {path:'checkout/:id' ,  loadComponent:()=>import('./features/checkout/checkout.component').then( (c)=>c.CheckoutComponent )  , title:'checkout Page' , data: { prerender: false }  }
+        {path:'checkout/:id' ,  loadComponent:()=>import('./features/checkout/checkout.component').then( (c)=>c.CheckoutComponent )  , title:'checkout Page' , data: { prerender: false }  },
+        {path:'categorydetails/:slug/:id' ,  loadComponent:()=>import('./features/category-details/category-details.component').then( (c)=>c.CategoryDetailsComponent )  , title:'Category Page' , data: { prerender: false }  },
+        {path:'categorydetails/:id' ,  loadComponent:()=>import('./features/category-details/category-details.component').then( (c)=>c.CategoryDetailsComponent )  , title:'Category Page' , data: { prerender: false }  },
         
     ]},
     {path:'**' , component:NotfoundComponent , title:'Not Found Page'}
