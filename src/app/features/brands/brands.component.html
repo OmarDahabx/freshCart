@@ -2,21 +2,23 @@
     <div class="container">
         <h2 class="text-center sm:text-2xl md:text-3xl lg:text-4xl text-2xl text-gray-700 dark:text-gray-100 mb-6 ms-6 md:ms-0 lg:ms-0 font-semibold mb-8">All Brands</h2>
 
-        <!-- <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 gap-10 px-6 mx-auto sm:px-2 md:px-2 lg:px-1 xl:px-0 2xl:px-0">
-        @if (allCategories()?.data) {
-            @for (category of allCategories()!.data; track category._id) {
-            <div class="cart bg-white rounded-4xl shadow-md p-6 overflow-hidden mx-auto hover:shadow-xl hover:-translate-y-2 transition ease-in-out  group/cate overflow-hidden ">
-                <div class="cursor-pointer" [routerLink]="['/categorydetails', category.slug , category._id]">
-                    <div class="w-56 sm:w-56 md:w-52 lg:w-52 xl:w-52 2xl:w-60">
-                        <img [src]="category.image" class="w-full h-[265px] " [alt]="category.name">
-                    </div>
+        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-10 px-6 mx-auto sm:px-2 md:px-2 lg:px-1 xl:px-0 2xl:px-0">
+        @if (allBrands()) {
+            @for (brand of allBrands() ; track brand._id) {
+            
+                <div class="brands bg-white rounded-4xl shadow-md hover:shadow-green-600 hover:shadow-[0_0_25px_5px_rgba(34,197,94,0.4)] p-6 mx-auto hover:-translate-y-1 transition-all duration-200 ease-in-out  group/cate overflow-hidden ">
+                    <div class="cursor-pointer" [routerLink]="['/brand', brand.slug , brand._id]">
+                        <div class="w-56 sm:w-56 md:w-52 lg:w-52 xl:w-52 2xl:w-60">
+                            <img [src]="brand.image" class="w-full  " [alt]="brand.name">
+                        </div>
                 
-                    <h3 class="text-lg font-medium mt-3 text-center text-green-700"> {{category.name}}</h3>
+                        <h3 class="text-lg font-medium mt-3 text-center text-green-700"> {{brand.name}}</h3>
+                    </div>
                 </div>
-            </div>
+            
         }
         }
-        </div> -->
+        </div>
 
         </div>
 </section>

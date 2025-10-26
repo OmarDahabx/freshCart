@@ -12,4 +12,7 @@ export class BrandsService {
   getAllBrands():Observable<any> {
     return this.httpClient.get(environment.baseUrl + 'brands')
   }
+  getSpecificBrand(id:string | null):Observable<any> {
+    return this.httpClient.get(environment.baseUrl + `brands/${id}`)
+  } 
 }

@@ -28,6 +28,8 @@ export const routes: Routes = [
         {path:'checkout/:id' ,  loadComponent:()=>import('./features/checkout/checkout.component').then( (c)=>c.CheckoutComponent )  , title:'checkout Page' , data: { prerender: false }  },
         {path:'categorydetails/:slug/:id' ,  loadComponent:()=>import('./features/category-details/category-details.component').then( (c)=>c.CategoryDetailsComponent )  , title:'Category Page' , data: { prerender: false }  },
         {path:'categorydetails/:id' ,  loadComponent:()=>import('./features/category-details/category-details.component').then( (c)=>c.CategoryDetailsComponent )  , title:'Category Page' , data: { prerender: false }  },
+        {path:'brand/:id' ,  loadComponent:()=>import('./features/specific-brand/specific-brand.component').then( (c)=>c.SpecificBrandComponent )  , title:'Brand Page' , data: { prerender: false }  },
+        {path:'brand/:slug/:id' ,  loadComponent:()=>import('./features/specific-brand/specific-brand.component').then( (c)=>c.SpecificBrandComponent )  , title:'Brand Page' , data: { prerender: false }  },
         
     ]},
     {path:'**' , component:NotfoundComponent , title:'Not Found Page'}
