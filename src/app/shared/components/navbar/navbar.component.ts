@@ -1,4 +1,4 @@
-import { Component, computed, inject, input, Input, InputSignal, OnInit, PLATFORM_ID, Signal } from '@angular/core';
+import { Component, computed, inject, input, Input, InputSignal, OnInit, PLATFORM_ID, signal, Signal } from '@angular/core';
 import { FlowbiteService } from '../../../core/services/flowbite/flowbite.service';
 import { initFlowbite } from 'flowbite';
 import { RouterLink, RouterLinkActive } from '@angular/router';
@@ -26,12 +26,11 @@ export class NavbarComponent implements OnInit {
     this.flowbiteService.loadFlowbite((flowbite) => {
       initFlowbite();
     });
-
+  
     if(isPlatformBrowser(this.id)){
     this.getAllCartData();
     }
   }
-
 
 
   getAllCartData():void {
