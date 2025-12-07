@@ -1,0 +1,33 @@
+<section class="bg-gray-200 rounded-lg border border-gray-200 p-4 shadow-md md:w-1/2 mx-auto py-16 md:py-35">
+    <h1 class="text-center mb-3 font-light text-3xl">Register Now</h1>
+
+    <form [formGroup]="registerForm" (ngSubmit)="submitForm()" class="px-0.5 sm:px-0.5 md:px-0">
+        
+        <app-input [control]="registerForm.get('name')" [typeInput]="'text'" [idInput]="'name'" [labelInput]="'Name'" ></app-input>
+
+        <app-input [control]="registerForm.get('email')" [typeInput]="'email'" [idInput]="'email'" [labelInput]="'Email'" ></app-input>
+        <app-input [control]="registerForm.get('password')"  [idInput]="'password'" [labelInput]="'Password'" >
+            Password must be at least 6 characters
+        </app-input>
+        <app-input [control]="registerForm.get('rePassword')"  [idInput]="'rePassword'" [labelInput]="'RePassword'" ></app-input>
+
+
+        <app-input [control]="registerForm.get('phone')" [typeInput]="'tel'" [idInput]="'phone'" [labelInput]="'Phone'" >
+            Please enter a valid Egyptian phone number (e.g., 010XXXXXXXX)
+        </app-input>
+
+
+
+        <button class="btn" type="submit">Register
+            @if (isLoading()) {
+                <span><i class="fas fa-spinner animate-spin"></i></span>
+            }
+        </button>
+
+        @if (msgError()) {
+            <p class="text-center text-red-900 mt-4 p-4 bg-red-200">{{msgError()}}</p>
+        }
+
+         <a class="text-sky-600 cursor-pointer inline-block mt-5 text-start w-full text-lg sm:text-lg md:text-xl lg:text-2xl " routerLink="/login">Already Have Account ? </a>
+    </form>
+</section>

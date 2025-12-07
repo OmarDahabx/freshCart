@@ -1,0 +1,37 @@
+<div 
+  class="cart bg-white border rounded shadow-md p-2 overflow-hidden group/card mx-auto pt-0 cursor-pointer transition-transform duration-300"
+>
+  <div [routerLink]="['/details', product().slug , product()._id ]">
+    <img 
+      [src]="product().imageCover" 
+      class="w-full transition-transform duration-300 group-hover/card:scale-105 group-active/card:scale-105"
+      [alt]="product().title"
+    >
+
+    <h3 class="text-sm sm:text-sm md:text-lg xl:text-xl font-medium mt-1 text-green-700">
+      {{product().category.name}}
+    </h3>
+
+    <h4 class="line-clamp-1 font-semibold my-3 text-lg sm:text-lg md:text-xl lg:text-xl text-gray-600">
+      {{product().title}}
+    </h4>
+
+    <div class="flex items-center justify-between mb-2 px-1 ms-auto">
+      <span class="text-green-600 font-medium text-lg sm:text-lg md:text-xl lg:text-xl">
+        {{product().price}} EGP
+      </span>
+
+      <span class="text-sm sm:text-lg md:text-lg lg:text-xl text-yellow-500">
+        <i class="fas fa-star text-yellow-500"></i> {{product().ratingsAverage}}
+      </span>
+    </div>
+  </div>
+
+  
+  <button 
+    (click)="addProductInCart(product()._id)" 
+    class="btn translate-y-0 sm:translate-y-[120%] sm:group-hover/card:translate-y-0 sm:group-active/card:translate-y-0 transition-transform duration-300 w-full"
+  >
+    Add To Cart
+  </button>
+</div>

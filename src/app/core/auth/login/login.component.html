@@ -1,0 +1,29 @@
+<section class="bg-gray-200 rounded-lg border border-gray-200 p-4 shadow-md md:w-1/2 mx-auto py-16 md:py-35">
+    <h1 class="text-center mb-3 font-light text-3xl">login Now</h1>
+
+    <form [formGroup]="loginForm" (ngSubmit)="submitForm()" class="px-0.5 sm:px-0.5 md:px-0">
+       
+
+        <app-input [control]="loginForm.get('email')" [typeInput]="'email'" [idInput]="'email'" [labelInput]="'Email'" ></app-input>
+        <app-input [control]="loginForm.get('password')" [idInput]="'password'" [labelInput]="'Password'" >
+            Password must be at least 6 characters
+        </app-input>
+
+
+
+        <button class="btn" type="submit">login
+            @if (isLoading()) {
+                <span><i class="fas fa-spinner animate-spin"></i></span>
+            }
+        </button>
+
+        @if (msgError()) {
+            <p class="text-center text-red-900 mt-4 p-4 bg-red-200">{{msgError()}}</p>
+        }
+
+       <div class="flex items-center justify-between">
+         <a class="text-sky-600 cursor-pointer inline-block mt-5 text-start w-full text-sm sm:text-sm md:text-lg lg:text-xl" routerLink="/register">Don’t have an account? Create one</a>
+         <a class="text-sky-600 cursor-pointer inline-block mt-5 text-end w-full text-sm sm:text-sm md:text-lg lg:text-xl " routerLink="/forget">Forget Password ? </a>
+       </div>
+    </form>
+</section>

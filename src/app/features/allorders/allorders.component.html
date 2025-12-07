@@ -1,0 +1,104 @@
+<section class="py-14">
+  <div class="container mx-auto px-4 sm:px-6 md:px-8">
+    <h2 class="text-3xl sm:text-4xl text-center my-10 sm:my-20">
+      All Your Orders
+    </h2>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <!-- Orders Section -->
+      <div class="col-span-12 lg:col-span-10">
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 p-2"
+        >
+          @for (order of allOrders(); track order._id) {
+          @for (item of order.cartItems; track item._id) {
+          <div
+            class="w-full max-w-xs sm:max-w-sm mx-auto bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 overflow-hidden hover:shadow-md transition-transform hover:-translate-y-1"
+          >
+            <img
+              class="rounded-t-lg w-full max-h-[280px] sm:max-h-[340px] object-cover"
+              [src]="item.product.imageCover"
+              [alt]="item.product.title"
+            />
+
+            <div class="p-4 sm:p-5">
+              <h5
+                class="mb-2 text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-gray-900 dark:text-white line-clamp-1"
+              >
+                {{ item.product.title }}
+              </h5>
+              <p
+                class="mb-2 font-normal text-gray-700 dark:text-gray-400 text-sm sm:text-base"
+              >
+                Order ID : {{ order.id }}
+              </p>
+              <p
+                class="mb-2 font-normal text-gray-700 dark:text-gray-400 text-sm sm:text-base"
+              >
+                Is Delivered :
+                {{
+                  order.isDelivered ? 'Delivered 🚚' : 'Not Delivered ⏳'
+                }}
+              </p>
+              <p
+                class="mb-2 font-normal text-gray-700 dark:text-gray-400 text-sm sm:text-base"
+              >
+                Is Paid : {{ order.isPaid ? 'Paid ✅' : 'Not Paid ❌' }}
+              </p>
+              <p
+                class="mb-2 font-normal text-gray-700 dark:text-gray-400 text-sm sm:text-base"
+              >
+                Date : {{ order.paidAt | date: 'medium' }}
+              </p>
+              <p
+                class="font-normal text-gray-700 dark:text-gray-400 text-sm sm:text-base"
+              >
+                Payment Type :
+                @if (order.paymentMethodType === 'card') {
+                <span
+                  ><i class="fa-brands fa-cc-visa text-xl sm:text-2xl"></i
+                ></span>
+                } @else if (order.paymentMethodType === 'cash') {
+                <i class="fa-solid fa-hand-holding-dollar text-xl sm:text-2xl"></i>
+                }
+              </p>
+            </div>
+          </div>
+          } }
+        </div>
+      </div>
+
+      <!-- Summary Section -->
+        <div class="col-span-12 lg:col-span-2">
+  <div
+    class="bg-gray-200 flex flex-col grow py-8 px-5 rounded-lg text-center sm:text-left"
+  >
+    <p class="text-lg sm:text-xl md:text-2xl break-words">
+      Shipping Price: 
+      <span class="font-semibold">{{ allOrders()[0].shippingPrice }}</span>
+    </p>
+
+    <p class="text-lg sm:text-xl md:text-2xl my-2 break-words">
+      Tax Price: 
+      <span class="font-semibold">{{ allOrders()[0].taxPrice }}</span>
+    </p>
+
+    <hr class="mb-3 border-gray-400" />
+
+    <p class="text-lg sm:text-xl md:text-2xl mb-3 break-words">
+      Total Order Price: 
+      <span class="font-bold text-green-700">{{ allOrders()[0].totalOrderPrice }}</span>
+    </p>
+
+    <button
+      class="btn rounded-lg text-base sm:text-lg md:text-xl w-full mt-2"
+    >
+      Show Order Details
+    </button>
+  </div>
+</div>
+
+
+    </div>
+  </div>
+</section>

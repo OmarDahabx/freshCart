@@ -1,0 +1,82 @@
+<!-- <section class="bg-gray-100 py-14">
+  <div class="container">
+    <h2
+      class="text-center sm:text-2xl md:text-3xl lg:text-4xl text-2xl text-gray-700 dark:text-gray-100 font-semibold mb-8"
+    >
+      Main Categories
+    </h2>
+
+    <div
+      class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 px-6 sm:px-2 md:px-2 lg:px-1 xl:px-0"
+    >
+      @if (allCategories()?.data) {
+      @for (category of allCategories()!.data; track category._id) {
+      <div
+        class="cart bg-white rounded-4xl shadow-md p-6 overflow-hidden mx-auto hover:shadow-xl hover:-translate-y-2 transition ease-in-out group/cate flex flex-col justify-between"
+      >
+        <div
+          class="cursor-pointer flex flex-col items-center flex-grow"
+          [routerLink]="['/categorydetails', category.slug, category._id]"
+        >
+          <div class="w-full flex justify-center mb-4">
+            <img
+              [src]="category.image"
+              class="w-40 sm:w-44 md:w-48 lg:w-52 xl:w-56 2xl:w-60 h-auto object-contain md:h-[269px]"
+              [alt]="category.name"
+            />
+          </div>
+
+          <h3
+            class="text-sm sm:text-lg md:text-xl lg:text-2xl font-medium text-center text-green-700 mt-auto"
+          >
+            {{ category.name }}
+          </h3>
+        </div>
+      </div>
+      } }
+    </div>
+  </div>
+</section> -->
+
+<section class="bg-gray-100 py-14 dark:bg-gray-900">
+  <div class="container">
+    <h2
+      class="text-center sm:text-2xl md:text-3xl lg:text-4xl text-2xl text-gray-700 dark:text-gray-100 font-semibold mb-8"
+    >
+      Main Categories
+    </h2>
+
+    <div
+      class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 px-6 sm:px-2 md:px-2 lg:px-1 xl:px-0"
+    >
+      @if (allCategories()?.data) {
+      @for (category of allCategories()!.data; track category._id) {
+      <div
+        class="cart bg-white dark:bg-gray-800 rounded-4xl shadow-md p-6 overflow-hidden mx-auto transition-all duration-300 ease-in-out group/cate flex flex-col justify-between cursor-pointer
+               hover:shadow-2xl hover:-translate-y-2 group-hover/cate:scale-[1.02]
+               active:shadow-2xl active:-translate-y-2 active:scale-[1.02]
+               group-active/cate:shadow-2xl group-active/cate:-translate-y-2 group-active/cate:scale-[1.02]"
+      >
+        <div
+          class="flex flex-col items-center flex-grow transition-transform duration-300 group-hover/cate:scale-105 group-active/cate:scale-105"
+          [routerLink]="['/categorydetails', category.slug, category._id]"
+        >
+          <div class="w-full flex justify-center mb-4">
+            <img
+              [src]="category.image"
+              class="w-40 sm:w-44 md:w-48 lg:w-52 xl:w-56 2xl:w-60 h-auto object-contain md:h-[269px] transition-transform duration-300 group-hover/cate:scale-105 group-active/cate:scale-105"
+              [alt]="category.name"
+            />
+          </div>
+
+          <h3
+            class="text-sm sm:text-lg md:text-xl lg:text-2xl font-medium text-center text-green-700 dark:text-green-400 mt-auto transition-colors duration-300 group-hover/cate:text-green-600 group-active/cate:text-green-600"
+          >
+            {{ category.name }}
+          </h3>
+        </div>
+      </div>
+      } }
+    </div>
+  </div>
+</section>

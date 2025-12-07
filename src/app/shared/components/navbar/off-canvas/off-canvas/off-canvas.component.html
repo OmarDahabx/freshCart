@@ -1,0 +1,60 @@
+<div id="mobile-menu"
+  class="fixed top-0 left-0 z-40 w-64 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-gray-200 dark:bg-gray-800 border-e"
+  tabindex="-1">
+
+  <!-- Header -->
+  <div class="border-b pb-4 flex items-center">
+    <img src="/assets/images/freshcart-logo.svg" class="h-7" />
+    <button type="button" data-drawer-hide="mobile-menu"
+      class="w-9 h-9 absolute top-2.5 right-2.5 flex items-center justify-center hover:bg-gray-300 dark:hover:bg-gray-700 rounded">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M6 18 17.94 6M18 18 6.06 6" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Links -->
+  <div class="py-5">
+    <ul class="space-y-3 font-medium">
+
+      @if (isLogin() === true) {
+      <li class="group"><a routerLink="/home" data-drawer-hide="mobile-menu" class="block px-2 py-1.5 group-hover:ms-2.5 transition-all ease-in duration-300 hover:text-green-700 hover:bg-gray-300 dark:hover:bg-gray-700 rounded">Home</a></li>
+      <li class="group"><a routerLink="/products" data-drawer-hide="mobile-menu" class="block px-2 py-1.5 group-hover:ms-2.5 transition-all ease-in duration-300 hover:text-green-700 hover:bg-gray-300 dark:hover:bg-gray-700 rounded">Products</a></li>
+      <li class="group"><a routerLink="/categories" data-drawer-hide="mobile-menu" class="block px-2 py-1.5 group-hover:ms-2.5 transition-all ease-in duration-300 hover:text-green-700 hover:bg-gray-300 dark:hover:bg-gray-700 rounded">Categories</a></li>
+      <li class="group"><a routerLink="/brands" data-drawer-hide="mobile-menu" class="block px-2 py-1.5 group-hover:ms-2.5 transition-all ease-in duration-300 hover:text-green-700 hover:bg-gray-300 dark:hover:bg-gray-700 rounded">Brands</a></li>
+      }
+
+      <li class="pt-2 border-t">
+        <div class="flex space-x-4 text-lg">
+          <a class="hover:text-green-700">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a class="hover:text-green-700">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+          <a class="hover:text-green-700">
+            <i class="fa-brands fa-tiktok"></i>
+          </a>
+          <a class="hover:text-green-700">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+          <a class="hover:text-green-700">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+          <a class="hover:text-green-700">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+        </div>
+      </li>
+
+      @if (isLogin() === false) {
+      <li><a routerLink="/login" data-drawer-hide="mobile-menu" class="block px-2 py-1.5 hover:bg-gray-300 dark:hover:bg-gray-700 rounded">Log in</a></li>
+      <li><a routerLink="/register" data-drawer-hide="mobile-menu" class="block px-2 py-1.5 hover:bg-gray-300 dark:hover:bg-gray-700 rounded">Register</a></li>
+      } @else {
+      
+      <li><a (click)="logOut()" data-drawer-hide="mobile-menu" class="hover:text-green-700 cursor-pointer block px-2 py-1.5 hover:bg-gray-300 dark:hover:bg-gray-700 rounded">Sign out</a></li>
+      }
+    </ul>
+  </div>
+
+</div>

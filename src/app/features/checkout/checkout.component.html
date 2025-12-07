@@ -1,0 +1,19 @@
+<section class="bg-gray-200 p-10 my-14 md:w-1/2 mx-auto shadow" >
+    <h1 class="text-center text-4xl my-3">Chech Out</h1>
+
+    <form [formGroup]="checkoutForm" (ngSubmit)="submitCheckOut()">
+        <app-input [element]="'textarea'" [control]="checkoutForm.get('shippingAddress')?.get('details')" [idInput]="'details'"  [labelInput]="'Details'" ></app-input>
+        <app-input [control]="checkoutForm.get('shippingAddress')?.get('phone')" [idInput]="'phone'" [typeInput]="'tel'"  [labelInput]="'Phone'" >Please enter a valid Egyptian phone number (e.g., 010XXXXXXXX)</app-input>
+        <app-input [control]="checkoutForm.get('shippingAddress')?.get('city')" [idInput]="'city'" [typeInput]="'text'"  [labelInput]="'City'" ></app-input>
+    
+    
+    
+     <div class="flex items-center space-x-10">
+        <button class="btn">Payment By Visa</button>
+        <!-- <button class="btn">Payment By Cash</button> -->
+    </div>
+    
+    </form>
+
+   
+</section>

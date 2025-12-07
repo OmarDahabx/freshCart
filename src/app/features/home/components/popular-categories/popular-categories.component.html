@@ -1,0 +1,28 @@
+<section class="bg-white dark:bg-gray-800 py-14">
+
+    <div class="container mx-auto">
+            <h2 class="sm:text-2xl md:text-3xl lg:text-4xl text-2xl text-gray-700 dark:text-gray-100 mb-6 ms-6 md:ms-0 lg:ms-0 font-semibold">Shop Popular Categories</h2>
+<div class="px-4 mx-auto lg:px-0">
+     <owl-carousel-o class="mt-4 mx-auto px-10 md:px-0 lg:px-0" [options]="categoriesOptions()">
+
+    @for (category of categoriesList(); track category._id) {
+      <ng-template class="w-[300px] mx-4 px-4 md:mx-0 md:px-0 " carouselSlide [id]="category._id">
+
+        <div class=" border border-green-700 rounded pb-3">
+
+                <img class="w-full h-[265px]" [src]="category.image" [alt]="category.name">
+
+                <h3 class="title-color text-lg font-medium mt-4 pb-4 ms-2.5">{{category.name}}</h3>
+
+        </div>
+        
+      </ng-template>
+    }
+
+  </owl-carousel-o>
+</div>
+        
+            
+    </div>
+</section>
+
